@@ -1,0 +1,22 @@
+{
+  "name": "exo_boutique",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elozano03/exo_boutique.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elozano03/exo_boutique/issues"
+  },
+  "homepage": "https://github.com/elozano03/exo_boutique#readme",
+  "description": ""
+}
