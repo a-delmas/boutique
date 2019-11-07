@@ -5,11 +5,15 @@ $(document).ready(function () {
     // var row = $('<div class="row no gutters">')
     // card.append(row)
 
-    var cart = []
 
-
+    var cart = sessionStorage.getItem("cart")
+    if (cart == null) {
+        cart = []
+    } else {
+        cart = JSON.parse(cart)
+    }
+    console.log(cart);
     
-
     var cardline = $(".cardline")
 
     for (let i = 0; i < cart.length; i++) {
@@ -30,7 +34,7 @@ $(document).ready(function () {
 
 
         var quantity = $('<div class="col-2 d-flex align-items-center justify-content-center">')
-        var inputquantity = $('<input type="number" value="'+cart[i].quantity+'" min="0" max="'+catalog[cart[i].productId].quantity+'" step="1" class="w-50"  id="qte-' + cart[i].productId + '" data-unit-price="' + catalog[cart[i].productId].price + '">')
+        var inputquantity = $('<input type="number" value="' + cart[i].quantity + '" min="0" max="' + catalog[cart[i].productId].quantity + '" step="1" class="w-50"  id="qte-' + cart[i].productId + '" data-unit-price="' + catalog[cart[i].productId].price + '">')
         quantity.append(inputquantity)
         rowGutter.append(quantity)
 
@@ -43,13 +47,14 @@ $(document).ready(function () {
         total.html(catalog[cart[i].productId].price * inputquantity.val() + " €")
 
         var delline = $('<div class="col-2 d-flex align-items-center pl-4">')
-        var deletea = $('<a href="#" class="btn btn-outline-info justify-content-center" id="delete'+ cart[i].productId +'">')
+        var deletea = $('<a href="#" class="btn btn-outline-info justify-content-center" id="delete' + cart[i].productId + '">')
         deletea.html("Supp")
         delline.append(deletea)
         rowGutter.append(delline)
 
         $('a[id*="delete"]').click(function () {
             $('#mainDiv' + $(this).attr("id").replace("delete", "")).remove()
+            
         })
 
         inputquantity.change(function () {
@@ -74,7 +79,7 @@ $(document).ready(function () {
     var totalHorsTaxe = $('<div class="col-12" id="totalHT">')
     // totalHorsTaxe.html("Total H.T : " +  + " €")
     $('.total').append(totalHorsTaxe)
-    
+
     var TVA = $('<div class="col-12" id="TVA">')
     TVA.html("dont T.V.A : 20%")
     $('.total').append(TVA)
@@ -87,10 +92,10 @@ $(document).ready(function () {
 })
 
 
-function updatetotal(){
+function updatetotal() {
     var newTotalHT = 0
     var newTotalTTC = 0
-    $('div[id*="total-"]').each(function () { 
+    $('div[id*="total-"]').each(function () {
         newTotalHT += parseInt($(this).text())
         $("#totalHT").html("Total H.T : " + newTotalHT + " €")
         newTotalTTC += parseInt($(this).text())
