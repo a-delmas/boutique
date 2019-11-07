@@ -5,20 +5,10 @@ $(document).ready(function () {
     // var row = $('<div class="row no gutters">')
     // card.append(row)
 
-    var cart = [
-        {
-            productId: 1,
-            quantity: 1,
-        },
-        {
-            productId: 42,
-            quantity: 2,
-        },
-        {
-            productId: 5,
-            quantity: 7,
-        },
-    ]
+    var cart = []
+
+
+    
 
     var cardline = $(".cardline")
 
