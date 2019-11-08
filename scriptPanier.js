@@ -13,7 +13,7 @@ $(document).ready(function () {
         cart = JSON.parse(cart)
     }
     console.log(cart);
-    
+
     var cardline = $(".cardline")
 
     for (let i = 0; i < cart.length; i++) {
@@ -52,26 +52,32 @@ $(document).ready(function () {
         delline.append(deletea)
         rowGutter.append(delline)
 
-        $('a[id*="delete"]').click(function () {
-            $('#mainDiv' + $(this).attr("id").replace("delete", "")).remove()
-            
-        })
-
+        
+        
+        
         inputquantity.change(function () {
             var newQty = parseInt($(this).val())
             var inputId = $(this).attr("id")
             var totalId = inputId.replace("qte", "total")
             var priceUnit = catalog[cart[i].productId].price
-
+            
             var newTotal = newQty * priceUnit
-
+            
             $("#" + totalId).html(newTotal + " €")
-
+            
             updatetotal()
-
+            
         })
-
+        
     }
+            $('a[id*="delete"]').click(function () {
+                $('#mainDiv' + $(this).attr("id").replace("delete", "")).remove()
+                // var itemIndex = cart.findIndex(x => x.productId == parseInt($(this).attr("id").replace("delete", "")))
+               // cart.splice(itemIndex, 1)
+               // console.log(cart);
+               // sessionStorage.setItem("cart")
+                
+            })
     var totalCart = $('<div class="col-12">')
     totalCart.html("Panier")
     $('.total').append(totalCart)

@@ -34,7 +34,6 @@ $(document).ready(function () {
     sessionStorage.setItem("cart", card_str);
 
   })
-  og(catalog[GET_PARAM("product_id")].name);
 
   $(".title").html(catalog[GET_PARAM("product_id")].name)
   $(".price").html("Prix :" + catalog[GET_PARAM("product_id")].price + "€")
